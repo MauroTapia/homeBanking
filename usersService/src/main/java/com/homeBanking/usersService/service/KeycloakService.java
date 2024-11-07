@@ -1,11 +1,15 @@
 package com.homeBanking.usersService.service;
 
 import com.homeBanking.usersService.config.KeycloakClientConfig;
+import com.homeBanking.usersService.entities.AccessKeycloak;
+import com.homeBanking.usersService.entities.Login;
 import com.homeBanking.usersService.entities.User;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.admin.client.CreatedResponseUtil;
+import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.resource.RealmResource;
+import org.keycloak.admin.client.token.TokenManager;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +19,7 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.stereotype.Service;
 
+import javax.naming.AuthenticationException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -91,6 +96,36 @@ public class KeycloakService {
         logger.info("User created successfully with ID: {}", userRepresentation.getId());
 
         return User.toUser(userRepresentation);
-
     }
+
+    public AccessKeycloak login(Login login) throws Exception {
+        try{
+
+            AccessKeycloak tokenAccess = null;
+            Keycloak keycloakClient = null;
+            TokenManager tokenManager = null;
+
+            keycloakClient = Keycloak.getInstance(serverUrl,realm,login.getEmail(), login.getPassword(), clientId, clientSecret);
+
+            tokenManager = keycloakClient.tokenManager();
+
+            tokenAccess = AccessKeycloak.builder()
+                    .accessToken(tokenManager.getAccessTokenString())
+                    .expiresIn(tokenManager.getAccessToken().getExpiresIn())
+                    .refreshToken(tokenManager.refreshToken().getRefreshToken())
+                    .scope(tokenManager.getAccessToken().getScope())
+                    .build();
+
+            return tokenAccess;
+
+        }  catch (Exception e) {
+            throw new AuthenticationException("Invalid Credentials");
+        }
+    }
+
+    public void logout(String userId) {
+        getRealm().users().get(userId).logout();
+    }
+
+
 }

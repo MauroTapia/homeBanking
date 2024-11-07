@@ -35,8 +35,7 @@ public class User {
     @JsonIgnore
     private String keycloakId;
 
-    public User(Long id, String name, String lastName, String username, String email, String phone, String cvu, String alias, String password) {
-        this.id = id;
+    public User (String name, String lastName, String username, String email, String phone, String cvu, String alias, String password) {
         this.name = name;
         this.lastName = lastName;
         this.username = username;
@@ -46,6 +45,8 @@ public class User {
         this.alias = alias;
         this.password = password;
     }
+
+
 
 
     public static User toUser(UserRepresentation userRepresentation) {
