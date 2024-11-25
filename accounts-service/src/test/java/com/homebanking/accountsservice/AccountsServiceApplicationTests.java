@@ -1,10 +1,10 @@
-package com.digitalMoneyHouse.cardsservice;
+package com.homebanking.accountsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CardsServiceApplicationTests {
+class AccountsServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

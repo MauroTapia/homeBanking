@@ -1,10 +1,10 @@
-package com.dh.digitalMoneyHouse.gateway;
+package com.homeBanking.usersservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GatewayApplicationTests {
+class UsersServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

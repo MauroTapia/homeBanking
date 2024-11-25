@@ -1,10 +1,10 @@
-package com.dh.digitalMoneyHouse.usersservice;
+package com.homeBanking.configserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UsersServiceApplicationTests {
+class ConfigServerApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,10 +1,10 @@
-package com.dh.digitalMoneyHouse.eurekaserver;
+package com.homeBanking.cardsservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EurekaServerApplicationTests {
+class CardsServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
