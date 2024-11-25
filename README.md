@@ -2,6 +2,10 @@
 
 Aplicación creada con microservicios utilizando Spring Boot, Hibernate, Docker, Java y MySQL.
 
+## Estructura del proyecto
+![image](https://github.com/user-attachments/assets/cc314216-7c94-4fb9-9221-ce458fdf0778)
+
+
 ## Documentación
 
 - [Testing y Kick Off](https://drive.google.com/drive/folders/1vVolvYuS63WcB6Fw6vY2M4vFJilzaaqt?usp=drive_link)
